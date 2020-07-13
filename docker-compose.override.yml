@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  gasstation.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "4444:80"
+    
+  sql.server:
+    image: microsoft/mssql-server-linux:2017-latest
+    environment:
+      ACCEPT_EULA: Y 
+      MSSQL_SA_PASSWORD: 123Aa321 
+      MSSQL_PID: Developer
+    ports:
+      - "11433:1433"
+
+  post.gres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: desconhecida
+      POSTGRES_USER: postgres
+      POSTGRES_DB: station
+      POSTGRES_EXTENSIONS: citext
+    ports:
+      - "6543:5432"
+
+  post.pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: seuemail@email.com
+      PGADMIN_DEFAULT_PASSWORD: 123Aa321
+    ports:
+      - "80:80"
