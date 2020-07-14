@@ -58,7 +58,7 @@ namespace EFCore_Multi_BD
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
